@@ -22,6 +22,7 @@ const Product = ({ match }) => {
 
     const dispatch = useDispatch();
 
+
     const [showColor, setShowColor] = useState(false);
     const [showProperty, setShowProperty] = useState(false);
 
@@ -108,7 +109,7 @@ const Product = ({ match }) => {
                 </Breadcrumb.Section>
             </Breadcrumb>
             <Container fluid style={{ margin: "30px 0" }}>
-                <Segment raised color="teal">
+                <Segment raised loading={loading} color="teal">
                     <Grid>
                         <Grid.Row stretched verticalAlign="middle">
                             <Grid.Column computer={3} tablet={3} mobile={16}>

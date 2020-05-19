@@ -42,7 +42,7 @@ const ProductSliderTemplate = ({ newSettings, type, data, submenu, color }) => {
                 }
             },
             {
-                breakpoint: 900,
+                breakpoint: 990,
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,

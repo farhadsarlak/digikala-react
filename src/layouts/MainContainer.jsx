@@ -6,6 +6,8 @@ import MainLayout from './mainLayout/MainLayout';
 import HomePage from '../pages/homePage/HomePage';
 import Product from '../pages/products/singleProduct/Product';
 import Checkout from '../pages/checkout/Checkout';
+import AllProduct from '../pages/products/allProduct/AllProduct';
+import FilterContext from '../components/context/filter/filterContext';
 
 
 const MainContainer = () => {
@@ -22,6 +24,13 @@ const MainContainer = () => {
             <Segment loading={isFetching} basic style={{ margin: "0!important", padding: "0" }}>
                 <Switch>
                     <MainLayout>
+
+                        <Route path="/products" render={() =>
+                            products.length > 0 && !isFetching &&
+                            <FilterContext isLoading={isFetching} products={products}>
+                                <AllProduct />
+                            </FilterContext>
+                        } />
 
                         <Route path="/checkout" component={Checkout} />
 
