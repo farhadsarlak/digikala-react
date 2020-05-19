@@ -1,0 +1,5 @@
+export const submenuTypes = {
+    GET_SUBMENU_START: "GET_SUBMENU_START",
+    GET_SUBMENU: "GET_SUBMENU",
+    GET_SUBMENU_END: "GET_SUBMENU_END"
+}

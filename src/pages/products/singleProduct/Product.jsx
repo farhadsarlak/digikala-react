@@ -12,7 +12,9 @@ import { addItemToCart } from '../../../redux/cart/cartActions';
 import { successMessage } from '../../../utils/showMessage';
 import ImageViewer from '../../../components/imageViewer/ImageViewer';
 import ProductSliderTemplate from '../../../components/widgets/productSliderTemplate/ProductSliderTemplate';
-
+import { getSingleSubmenuAsync } from '../../../redux/submenu/submenuActions';
+import { getSingleCategoryAsync } from '../../../redux/category/categoryActions';
+import { getSingleCollectionAsync } from '../../../redux/collection/collectionActions';
 
 const MAX_ITEMS = 3;
 
@@ -20,19 +22,28 @@ const Product = ({ match }) => {
 
     const dispatch = useDispatch();
 
-    const isLoading = useSelector(state => state.singleProduct.isLoading);
-    const product = useSelector(state => state.singleProduct);
-    const products = useSelector(state => state.shop.products);
-    const categories = useSelector(state => state.shop.categories);
-    const submenus = useSelector(state => state.shop.submenus);
-    const collections = useSelector(state => state.shop.collections);
-
     const [showColor, setShowColor] = useState(false);
     const [showProperty, setShowProperty] = useState(false);
 
+    const product = useSelector(state => state.singleProduct);
+    const products = useSelector(state => state.shop.products);
+    const loading = useSelector(state => state.singleProduct.isLoading);
+    const submenu = useSelector(state => state.singleSubmenu);
+    const submenus = useSelector(state => state.shop.submenus)
+    const category = useSelector(state => state.singleCategory);
+    const collection = useSelector(state => state.singleCollection);
+
     useEffect(() => {
         dispatch(getSingleProductAsync(match.params.id));
-    }, [dispatch, match]);
+        dispatch(getSingleSubmenuAsync(product.submenu));
+        dispatch(getSingleCategoryAsync(product.category));
+        dispatch(getSingleCollectionAsync(product.products));
+
+        return () => {
+            setShowColor(false);
+            setShowProperty(false)
+        }
+    }, [dispatch, match, product.submenu, product.category, product.products]);
 
     const panes = [
         {
@@ -78,31 +89,24 @@ const Product = ({ match }) => {
 
 
     return (
-        <Segment basic loading={isLoading} style={{ margin: "30px 0" }}>
+        <Segment basic loading={loading} style={{ margin: "30px 0" }}>
             <Breadcrumb>
-                <Breadcrumb.Section style={{ margin: "5px 0" }}> {
-                    categories.map(category =>
-                        category.id === product.category &&
-                        <Link className="breadcrumbLink" key={category.id} to={`/category/${category.id}`}>{category.title}</Link>
-                    )} </Breadcrumb.Section>
+                <Breadcrumb.Section style={{ margin: "5px 0" }}>
+                    <Link className="breadcrumbLink" to={`/category/${category.id}`}>{category.title}</Link>
+                </Breadcrumb.Section>
                 <Breadcrumb.Divider />
-                <Breadcrumb.Section style={{ margin: "5px 0" }}>{
-                    submenus.map(submenu =>
-                        submenu.id === product.submenu &&
-                        <Link className="breadcrumbLink" key={submenu.id} to={`/submenu/${submenu.id}`}>{submenu.title}</Link>
-                    )}</Breadcrumb.Section>
+                <Breadcrumb.Section style={{ margin: "5px 0" }}>
+                    <Link className="breadcrumbLink" to={`/submenu/${submenu.id}`}>{submenu.title}</Link>
+                </Breadcrumb.Section>
                 <Breadcrumb.Divider />
-                <Breadcrumb.Section style={{ margin: "5px 0" }}>{
-                    collections.map(collection =>
-                        collection.id === product.products &&
-                        <Link className="breadcrumbLink" key={collection.id} to={`/collection/${collection.id}`}>{collection.title}</Link>
-                    )}</Breadcrumb.Section>
+                <Breadcrumb.Section style={{ margin: "5px 0" }}>
+                    <Link className="breadcrumbLink" to={`/collection/${collection.id}`}>{collection.title}</Link>
+                </Breadcrumb.Section>
                 <Breadcrumb.Divider />
                 <Breadcrumb.Section style={{ margin: "5px 0" }} active>
                     {product.title}
                 </Breadcrumb.Section>
             </Breadcrumb>
-
             <Container fluid style={{ margin: "30px 0" }}>
                 <Segment raised color="teal">
                     <Grid>
@@ -125,8 +129,7 @@ const Product = ({ match }) => {
                                             </Grid.Column>
                                             <Grid.Column>
                                                 <b> دسته بندی: </b>
-                                                <span>{submenus.map(submenu =>
-                                                    submenu.id === product.submenu && submenu.title)}</span>
+                                                <span>{submenu.title}</span>
                                             </Grid.Column>
                                         </Grid>
                                     </Grid.Row>
@@ -227,13 +230,14 @@ const Product = ({ match }) => {
 
                 {/*  similar products */}
                 <Container style={{ margin: "50px 0" }}>
+                    <h4>محصولات مشابه</h4>
                     <ProductSliderTemplate
                         type="productSlider"
                         data={products}
                         color="teal"
-                        submenu={submenus[product.submenu - 1]}
+                        submenu={submenu}
                         newSettings={{
-                            autoplay: false,
+                            autoplay: true,
                             arrows: true,
                             autoplaySpeed: 3000,
                             slidesToShow: 4,
@@ -258,7 +262,7 @@ const Product = ({ match }) => {
                         color="teal"
                         submenu={submenus[1]}
                         newSettings={{
-                            autoplay: false,
+                            autoplay: true,
                             arrows: true,
                             autoplaySpeed: 3000,
                             slidesToShow: 4,
