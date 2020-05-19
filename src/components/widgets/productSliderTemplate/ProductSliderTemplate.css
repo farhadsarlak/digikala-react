@@ -1,0 +1,118 @@
+.card-productOffers{
+    box-shadow: none!important;
+    font-weight: normal;
+    text-align: right;
+    margin: 0 10px!important;
+}
+
+.button-view-all{
+    margin: 0 20px!important;
+}
+.card-productOffers{
+    max-height: 400px!important;
+    height: 400px!important;
+}
+.textLeft{
+    text-align: left !important;
+    font-weight: bold !important;
+}
+.padding{
+    margin: 0 auto !important;
+}
+.cart-header-productOffer{
+    font-weight: normal!important;
+    font-size: 14px!important;
+    direction: rtl!important;
+    text-align: justify!important;
+}
+
+.main-segment-offer{
+    margin:0 50px!important;
+}
+
+.offers{
+    margin: auto auto;
+}
+
+.textRight-suggestedProduct{
+    text-align: right;
+}
+
+.suggestedProductItems{
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-align: right !important;
+    font-weight: normal!important;
+
+}
+.price-suggestedProduct{
+    font-weight: bold!important;
+    direction: ltr!important;
+    text-align: left!important;
+}
+
+.main-segment-productSlider{
+    margin: 20px 15px!important;
+}
+
+@media only screen and (max-width: 767px) {
+    .cart-header-productOffer{
+        font-size: 13px!important;
+    }
+    .card-productOffers{
+        max-height: 300px!important;
+        height: 300px!important;
+    }
+    .cart-header-productOffer{
+        font-size: 13px!important;
+    }
+    .textLeft{
+        font-size: 12px!important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .cart-header-productOffer{
+        font-size: 12px!important;
+    }
+    .card-productOffers{
+        max-height: 380px!important;
+        height: 380px!important;
+    }
+    .cart-header-productOffer{
+        font-size: 12px!important;
+    }
+    .textLeft{
+        font-size: 11px!important;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .card-productOffers{
+        max-height: 300px!important;
+        height: 300px!important;
+    }
+    .cart-header-productOffer{
+        font-size: 12px!important;
+    }
+    .textLeft{
+        font-size: 11px!important;
+    }
+}
+@media only screen and (max-width: 390px) {
+    .card-productOffers{
+        max-height: 270px!important;
+        height: 270px!important;
+    }
+    .cart-header-productOffer{
+        font-size: 11px!important;
+    }
+    .main-segment-offer{
+        margin:0!important;
+    }
+    .textLeft{
+        font-size: 10px!important;
+    }
+}
+

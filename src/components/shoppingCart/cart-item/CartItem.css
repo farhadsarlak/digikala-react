@@ -1,0 +1,33 @@
+.cart-items-class {
+    width: 100%!important;
+    display: flex!important;
+    height: 60px!important;
+    margin-bottom: 33px !important;
+    color: #242424!important;
+    padding-right: 12px!important;
+}
+.cart-items-class img {
+    width: 25%;
+}
+
+.item-details-cart {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    padding: 10px 20px;
+}
+.name-in-dropdown {
+    font-size: 13px;
+    text-align: justify;
+}
+
+.quantity-in-dropdown{
+    text-align: right!important;
+    margin: 5px!important;
+    width: 50%;
+}
+
+.trash-icon-in-carts{
+    margin-top: auto!important;
+}

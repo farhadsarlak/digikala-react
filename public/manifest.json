@@ -1,0 +1,38 @@
+{
+  "name": "Digikala",
+  "display": "standalone",
+  "gcm_sender_id": "684034436780",
+  "short_name": "Digikala",
+  "lang": "fa",
+  "dir": "rtl",
+  "description": "Digikala Web App With ReactJs",
+  "scope": "/",
+  "start_url": ".",
+  "background_color": "#FFFFFF",
+  "theme_color": "#fb3449",
+  "version": "0.9",
+  "manifest_version": "0.2",
+  "orientation": "portrait",
+  "permissions": [
+    "notifications",
+    "webRequest"
+  ],
+  "author": "Farhad Sarlak",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "android-icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "iphone-pwa-icon-180.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

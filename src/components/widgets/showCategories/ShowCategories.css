@@ -1,0 +1,18 @@
+.textCenter{
+    text-align: center !important;
+    padding-bottom: 20px!important;
+}
+.categoryTitle{
+    font-size: 12px;
+}
+.categoryCount{
+    color: teal;
+}
+.categoryIcon{
+    margin: 0 auto !important;
+}
+.main-div-category{
+    margin: 0 auto !important;
+    padding: 2px!important;
+    text-align: center!important;
+}

@@ -1,0 +1,10 @@
+.Review-description{
+    text-align: justify!important;
+    padding: 10px!important;
+    font-size: 13px!important;
+    line-height: 30px!important;
+}
+.Review-ProductTitle{
+    font-weight: bold!important;
+    margin-bottom: 30px!important;
+}

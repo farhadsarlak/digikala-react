@@ -1,0 +1,16 @@
+.textButton{
+    font-size: 13px!important;
+    text-align: center!important;
+}
+@media only screen and (max-width: 450px) {
+    .textButton{
+        padding-right: 2.071429em!important;
+        font-size: .7em!important;
+    }
+}
+@media only screen and (max-width: 350px) {
+    .textButton{
+        padding-right: 1.071429em!important;
+        font-size: .5em!important;
+    }
+}

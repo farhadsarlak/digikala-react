@@ -1,0 +1,5 @@
+export const productTypes = {
+    GET_PRODUCT_START: "GET_PRODUCT_START",
+    GET_PRODUCT: "GET_PRODUCT",
+    GET_PRODUCT_END: "GET_PRODUCT_END"
+}

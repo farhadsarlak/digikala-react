@@ -1,0 +1,29 @@
+.mainMobileHeader{
+    width: 100%;
+    padding: 0 10px;
+}
+.mainMobileHeaderContainer{
+    display: flex;
+    width: 100%;
+    justify-content: space-between!important;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding:20px 10px;
+    margin-bottom: 20px!important;
+    z-index: 10;
+}
+.logoMobileItem{
+    width: 30px!important;
+}
+
+.mobileHeaderDivSearch{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 60px 0;
+}

@@ -1,0 +1,39 @@
+.checkoutPage-segment{
+    margin: 20px 10px!important;
+    padding-top: 20px!important;
+    background-color: #fefefe !important;
+    text-align: center!important;
+}
+.checkoutPage-title{
+    text-align: right!important;
+    font-size: 16px!important;
+}
+.checkoutPage-quantity{
+    padding: 10px!important;
+    text-align: center;
+    font-size: 16px!important;
+}
+.checkoutPage-item-container{
+    text-align: right!important;
+    padding: 15px 0 !important;
+    margin: 0 auto!important;
+}
+
+.propertiesTitle{
+    font-size: 12px!important;
+}
+@media only screen and (max-width: 400px){
+    .propertiesTitle{
+        font-size: 9px!important;
+    }
+
+}
+
+.label-price{
+    padding: 5px!important;
+    font-size: 14px!important;
+}
+
+.image-in-checkOutItemPage{
+    margin: auto auto !important;
+}

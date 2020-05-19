@@ -1,0 +1,47 @@
+.mainHeaderContainer{
+    position: fixed;
+    background-color: #fefefe;
+    margin-bottom: 5px;
+    z-index: 10;
+    top: 0!important;
+    left: 0;
+    right: 0;
+    width: 100%!important;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 80px!important;
+    align-items: center;
+    padding: 5px;
+}
+.logoItem{
+    background-size: contain;
+    margin: 10px 20px;
+    transition: background-position .3s cubic-bezier(.17,.67,.49,.93);
+}
+.searchItem{
+    flex:2;
+    margin:10px 20px;
+}
+
+.shoppingIconItem{
+    display: flex;
+    background: url(../../assets/images/shopping-bag.svg) no-repeat 20%;
+    height:24px;
+    background-size: contain;
+    width: 24px;
+    transition: background-position .3s cubic-bezier(.17,.67,.49,.93);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin:10px 25px;
+}
+
+
+.item-count{
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: tomato;
+}

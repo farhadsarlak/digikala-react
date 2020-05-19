@@ -1,0 +1,37 @@
+.continue-shopping-button{
+    margin:50px auto !important;
+}
+
+.checkoutPage-mainContainer{
+    margin: 50px 10px !important;
+    padding: 0 10px!important;
+}
+
+.column-in-checkout{
+    width: 61%!important;
+    padding-left: 0!important;
+    margin-left: 0!important;
+}
+
+.fontSize-price{
+    font-size: 20px!important;
+    color: red;
+}
+@media only screen and (max-width: 767px) {
+    .railPrice{
+        display: none!important;
+    }
+    .column-in-checkout{
+        width: 100%!important;
+        margin: 0 auto!important;
+    }
+}
+.buttonBottom{
+    padding: 10px 5px!important;
+    margin: 10px auto!important;
+}
+.railPrice{
+    z-index: 5;
+    padding: 0!important;
+    margin: 0!important;
+}
