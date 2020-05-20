@@ -1,0 +1,28 @@
+.paginations{
+    font-size: 1rem!important;
+    text-align: center!important;
+    justify-content: center!important;
+    align-items: center!important;
+}
+
+@media only screen and (max-width: 767px) {
+    .paginations{
+        font-size: .8rem!important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .paginations{
+        font-size: .8rem!important;
+    }
+}
+@media only screen and (max-width: 585px) {
+    .paginations{
+        font-size: .7rem!important;
+    }
+    .paginations a.item{
+        text-align: center!important;
+        margin:0 auto!important;
+        padding: 8px!important;
+    }
+}

@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
+import './AllProduct.css';
 import { Container, Grid, Segment, Card, Pagination } from 'semantic-ui-react';
 import { filterProductContext } from '../../../components/context/filter/filterProductContext';
 import { Helmet } from 'react-helmet/es/Helmet';
 import ProductSidebar from '../../../components/products/productSidebar/ProductSidebar';
+import SortProduct from '../../../components/products/sortProduct/SortProduct';
+import ShowProductData from '../../../components/products/productData/ProductData';
 
 const AllProduct = () => {
 
@@ -26,9 +29,9 @@ const AllProduct = () => {
             <Helmet>
                 <title>تمامی محصولات | دیجی کالا</title>
             </Helmet>
-            <Grid padded>
-                <Grid.Row stretched>
-                    <Grid.Column only={"computer tablet"} computer={4} tablet={5}>
+            <Grid>
+                <Grid.Row>
+                    <Grid.Column computer={4} tablet={5} mobile={16}>
                         <ProductSidebar />
                     </Grid.Column>
 
@@ -39,12 +42,12 @@ const AllProduct = () => {
                                     محصولی برای نمایش وجود ندارد
                             </h4> :
                                 <Segment raised color="teal">
-
-                                    {
-                                        productData.map(product =>
-                                            <p>{product.title}</p>)
-                                    }
-                                    {/* </Card.Group> */}
+                                    <SortProduct />
+                                    <Card.Group itemsPerRow={3}>{
+                                        productData.map((product, index) =>
+                                            <ShowProductData key={index} product={product} />
+                                        )}
+                                    </Card.Group>
                                 </Segment>
                         }
                     </Grid.Column>
@@ -55,16 +58,19 @@ const AllProduct = () => {
                 {
                     filteredProduct.length > 0 && totalPage > 1 &&
                     <Pagination
+                        className="paginations"
                         totalPages={totalPage}
                         onPageChange={handlePaginationChange}
                         defaultActivePage={currentPage}
+                        firstItem={null}
+                        lastItem={null}
                         pointing
                         secondary
                     />
                 }
             </div>
 
-        </Container>
+        </Container >
     )
 }
 

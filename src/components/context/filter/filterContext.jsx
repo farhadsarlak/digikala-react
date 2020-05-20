@@ -9,7 +9,7 @@ import { orderBy } from 'lodash';
 const FilterContext = ({ children, location, products, isLoading }) => {
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [perPage] = useState(20);
+    const [perPage] = useState(18);
     const [search, setSearch] = useState("");
     const [ProductList, setProductList] = useState(products);
     const [checkboxValue, setCheckboxValue] = useState("all");
@@ -35,6 +35,13 @@ const FilterContext = ({ children, location, products, isLoading }) => {
 
     const handlePaginationChange = (e, { activePage }) => {
         setCurrentPage(activePage);
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth"
+            });
+        }, 2)
     };
 
     let filterText = location.search ? (location.search.substr(1)) : "";
