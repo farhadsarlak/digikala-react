@@ -8,6 +8,7 @@ import Product from '../pages/products/singleProduct/Product';
 import Checkout from '../pages/checkout/Checkout';
 import AllProduct from '../pages/products/allProduct/AllProduct';
 import FilterContext from '../components/context/filter/filterContext';
+import Categories from '../pages/categories/Categories';
 
 
 const MainContainer = () => {
@@ -33,6 +34,8 @@ const MainContainer = () => {
                         } />
 
                         <Route path="/checkout" component={Checkout} />
+
+                        <Route path="/category/:id" component={Categories} />
 
                         <Route
                             path={"/product/:id"}

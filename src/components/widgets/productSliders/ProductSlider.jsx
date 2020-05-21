@@ -19,7 +19,7 @@ const ProductSlider = props => {
                             className="ui small centered image" />
                     </Grid.Row>
                     <Grid.Row className={"button-view-all"}>
-                        <Button className={"textButton"} inverted as={Link} to={"/products"}>
+                        <Button className={"textButton"} inverted as={Link} to={"/products?discount"}>
                             مشاهده همه
                                 </Button>
                     </Grid.Row>
