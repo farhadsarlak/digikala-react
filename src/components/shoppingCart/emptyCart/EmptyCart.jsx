@@ -64,7 +64,7 @@ const EmptyCart = ({ product }) => {
 							type="productSlider"
 							data={products}
 							color="teal"
-							submenu={submenus[2]}
+							submenu={submenus[1]}
 							newSettings={{
 								autoplay: false,
 								arrows: true,

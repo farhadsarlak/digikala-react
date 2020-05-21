@@ -11,13 +11,13 @@ const CategoriesSidebar = ({ collections, submenu, category }) => (
                 .map((item, i) =>
                     <div key={i} className={"sidebar-main-div"}>
                         <Divider horizontal className={"submenu-link"}>
-                            <Link to={`/submenus/${item.id}?submenu`} key={item.id}> {item.title} </Link>
+                            <Link to={`/products?submenus=${item.id}`} key={item.id}> {item.title} </Link>
                         </Divider>
                         {
                             collections.filter(collection => collection.submenu === item.id)
                                 .map((collection, i) =>
                                     <div key={i} className={"collections-link"}>
-                                        <Link to={`/submenus/${collection.id}?collections`}>{collection.title}</Link>
+                                        <Link to={`/products?collections=${collection.id}`}>{collection.title}</Link>
                                     </div>
                                 )
                         }
