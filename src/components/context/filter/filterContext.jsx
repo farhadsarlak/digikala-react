@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { filterProductContext } from './filterProductContext';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useLocation } from 'react-router-dom';
 import { paginate } from '../../../utils/Paginate';
 import { Segment } from 'semantic-ui-react';
 import { orderBy } from 'lodash';
 
 
-const FilterContext = ({ children, location, products, isLoading }) => {
+const FilterContext = ({ children, submenus, location, products, collections, isLoading }) => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage] = useState(18);
     const [search, setSearch] = useState("");
     const [ProductList, setProductList] = useState(products);
     const [checkboxValue, setCheckboxValue] = useState("all");
+    const [mainCollection, setMainCollection] = useState();
+    const [mainSubmenu, setMainSubmenu] = useState();
+    const [queryString, setQueryString] = useState([]);
+
 
     const sortFieldItem = [
         { key: "title", text: "عنوان", value: "title", icon: "text height" },
@@ -37,14 +41,14 @@ const FilterContext = ({ children, location, products, isLoading }) => {
         setCurrentPage(activePage);
         setTimeout(() => {
             window.scrollTo({
-                top: 0,
+                top: 100,
                 left: 0,
                 behavior: "smooth"
             });
         }, 2)
     };
 
-    let filterText = location.search ? (location.search.substr(1)) : "";
+    const filterText = useLocation().search.substr(1);
 
     const filteredProduct = ProductList?.filter
         (product => product.title?.toLowerCase().includes(search.toLowerCase()));
@@ -52,33 +56,58 @@ const FilterContext = ({ children, location, products, isLoading }) => {
     const productData = paginate(filteredProduct, currentPage, perPage);
 
     useEffect(() => {
-        switch (filterText) {
+
+        setQueryString(filterText.split("="));
+
+        switch (queryString[0]) {
             case "":
                 setProductList(products.filter(product => product));
                 setCheckboxValue("all");
                 break;
+
             case "discount":
                 setProductList(products.filter(product => product.discount && product));
                 setCheckboxValue("discount");
                 break;
+
+            case "collections":
+                setProductList(products.filter(product => product.products === parseInt(queryString[1])));
+                setMainCollection(collections.filter(coll => coll.id === parseInt(queryString[1])))
+                setCheckboxValue("collections");
+                break;
+
+            case "submenus":
+                setProductList(products.filter(product => product.submenu === parseInt(queryString[1])));
+                setMainSubmenu(submenus.filter(sub => sub.id === parseInt(queryString[1])));
+                setCheckboxValue("submenus")
+                break
+
             default: setProductList(products)
+        };
+
+        return () => {
+            setCheckboxValue("");
         }
-    }, [products, filterText]);
+
+    }, [products, queryString[0], queryString[1], filterText, collections, submenus]);
 
     const toggleCheckboxes = (e, { value }) => {
         setCheckboxValue(value);
         switch (value) {
             case "all":
                 setProductList(products.filter(product => product));
+                setMainSubmenu([]);
+                setMainCollection([]);
                 break;
             case "discount":
                 setProductList(products.filter(product => product.discount && product));
+                setMainCollection([]);
+                setMainSubmenu([]);
                 break;
 
             default: setProductList(products)
         }
     };
-
 
     return (
         <filterProductContext.Provider value={{
@@ -96,7 +125,12 @@ const FilterContext = ({ children, location, products, isLoading }) => {
             productData,
             setSearch,
             filteredProduct,
-            search
+            search,
+            mainCollection,
+            setQueryString,
+            setMainCollection,
+            mainSubmenu,
+            setMainSubmenu
         }}>
             <Segment basic loading={isLoading}>
                 {children}

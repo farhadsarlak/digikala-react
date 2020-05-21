@@ -11,6 +11,7 @@ import FilterContext from '../components/context/filter/filterContext';
 import Categories from '../pages/categories/Categories';
 
 
+
 const MainContainer = () => {
 
     const isFetching = useSelector(state => state.shop.isFetching);
@@ -18,6 +19,7 @@ const MainContainer = () => {
     const categories = useSelector(state => state.shop.categories);
     const submenus = useSelector(state => state.shop.submenus);
     const collections = useSelector(state => state.shop.collections);
+    const brands = useSelector(state => state.shop.brands);
 
 
     return (
@@ -28,7 +30,13 @@ const MainContainer = () => {
 
                         <Route path="/products" render={() =>
                             products.length > 0 && !isFetching &&
-                            <FilterContext isLoading={isFetching} products={products}>
+                            <FilterContext
+                                isLoading={isFetching}
+                                products={products}
+                                collections={collections}
+                                submenus={submenus}
+                                brands={brands}
+                            >
                                 <AllProduct />
                             </FilterContext>
                         } />

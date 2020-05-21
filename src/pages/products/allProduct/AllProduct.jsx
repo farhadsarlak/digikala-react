@@ -17,7 +17,7 @@ const AllProduct = () => {
         perPage,
         handlePaginationChange,
         productData,
-        filteredProduct
+        filteredProduct,
     } = filterContext;
 
     const totalPage = Math.ceil((filteredProduct.length) / perPage);
@@ -31,7 +31,7 @@ const AllProduct = () => {
             </Helmet>
             <Grid>
                 <Grid.Row>
-                    <Grid.Column computer={4} tablet={5} mobile={16}>
+                    <Grid.Column only={"computer tablet"} computer={4} tablet={5} >
                         <ProductSidebar />
                     </Grid.Column>
 

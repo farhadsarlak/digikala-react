@@ -97,11 +97,11 @@ const Product = ({ match }) => {
                 </Breadcrumb.Section>
                 <Breadcrumb.Divider />
                 <Breadcrumb.Section style={{ margin: "5px 0" }}>
-                    <Link className="breadcrumbLink" to={`/submenu/${submenu.id}`}>{submenu.title}</Link>
+                    <Link className="breadcrumbLink" to={`/products?submenus=${submenu.id}`}>{submenu.title}</Link>
                 </Breadcrumb.Section>
                 <Breadcrumb.Divider />
                 <Breadcrumb.Section style={{ margin: "5px 0" }}>
-                    <Link className="breadcrumbLink" to={`/collection/${collection.id}`}>{collection.title}</Link>
+                    <Link className="breadcrumbLink" to={`/products?collections=${collection.id}`}>{collection.title}</Link>
                 </Breadcrumb.Section>
                 <Breadcrumb.Divider />
                 <Breadcrumb.Section style={{ margin: "5px 0" }} active>

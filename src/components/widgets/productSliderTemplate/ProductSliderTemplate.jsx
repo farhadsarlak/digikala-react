@@ -74,11 +74,11 @@ const ProductSliderTemplate = ({ newSettings, type, data, submenu, color }) => {
     switch (type) {
 
         case ("homeSlide"):
-            template = data.reverse().filter((item, index) => index < 5).map((item, index) =>
+            template = data.filter((item, index) => index < 5).map((item, index) =>
                 <Image
                     key={index}
                     as={Link}
-                    to={`collection/${item.id}`}
+                    to={`/products?collections=${item.id}`}
                     src={`/assets/images/slider/slider${index + 1}.jpg`}
                     size={"big"}
                     rounded

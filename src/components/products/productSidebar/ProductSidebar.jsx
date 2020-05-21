@@ -6,8 +6,9 @@ import { filterProductContext } from '../../context/filter/filterProductContext'
 import { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import NumberFormat from 'react-number-format';
+import { withRouter } from 'react-router';
 
-const ProductSidebar = () => {
+const ProductSidebar = ({ history }) => {
 
     const filterContext = useContext(filterProductContext);
 
@@ -17,7 +18,12 @@ const ProductSidebar = () => {
         products,
         setSearch,
         priceRange,
-        search
+        search,
+        mainCollection,
+        setQueryString,
+        setMainCollection,
+        mainSubmenu,
+        setMainSubmenu
     } = filterContext;
 
     const [priceRangeText, setPriceRangeText] = useState([]);
@@ -47,10 +53,35 @@ const ProductSidebar = () => {
                                     <Icon name="delete" onClick={() => setSearch("")} />
                                 </Label> : null
                         }
+
+                        {
+                            mainCollection?.length > 0 ?
+                                <Label>
+                                    {mainCollection[0]?.title}
+                                    <Icon name="delete" onClick={() => {
+                                        setQueryString([]);
+                                        setMainCollection([]);
+                                        history.replace("/products")
+                                    }} />
+                                </Label> : null
+                        }
+
+                        {
+                            mainSubmenu?.length > 0 ?
+                                <Label>
+                                    {mainSubmenu[0]?.title}
+                                    <Icon name="delete" onClick={() => {
+                                        setQueryString([]);
+                                        setMainSubmenu([]);
+                                        history.replace("/products")
+                                    }} />
+                                </Label> : null
+                        }
+
                         {
                             checkboxValue === "all" ? <Label>
                                 همه
-                            </Label> : <Label>محصولات با تخفیف</Label>
+                            </Label> : checkboxValue === "discount" ? <Label>محصولات با تخفیف</Label> : null
                         }
                     </Grid.Column>
                 </Grid.Row>
@@ -64,7 +95,6 @@ const ProductSidebar = () => {
                             size="mini"
                             value={search}
                             onChange={e => setSearch(e.target.value)}
-
                         />
                     </Grid.Column>
                 </Grid.Row>
@@ -121,7 +151,7 @@ const ProductSidebar = () => {
                         }
                         <Range
                             min={0}
-                            max={100000000}
+                            max={60000000}
                             defaultValue={[0, 10000000]}
                             onChange={(e) => {
                                 setPriceRangeText(e);
@@ -135,4 +165,4 @@ const ProductSidebar = () => {
     )
 }
 
-export default ProductSidebar;
+export default withRouter(ProductSidebar);

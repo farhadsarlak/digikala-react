@@ -14,5 +14,5 @@ export const filterProductContext = createContext({
     checkboxValue: true,
     sortFieldItem: [],
     sortFieldBy: [],
-    search: ""
+    search: "",
 })
